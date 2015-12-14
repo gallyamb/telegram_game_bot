@@ -55,3 +55,13 @@ docs/_build/
 
 # PyBuilder
 target/
+
+#Idea files
+.idea/
+*.iml
+
+#Logs
+*.log
+
+#Private telegram bot token
+bot_token.py
