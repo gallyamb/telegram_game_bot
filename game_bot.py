@@ -88,13 +88,11 @@ def send_question(bot, chat_id):
     chat["index"] += 1
     chat["word"] = word
 
-    defs_to_send = [definitions[word]]
-    while len(defs_to_send) < 3:
-        another_word = all_words[random.randint(0, len(all_words) - 1)]
-        if definitions[another_word] in defs_to_send:
-            continue
-        another_definition = definitions[another_word]
-        defs_to_send.append(another_definition)
+    definition = definitions.pop(word)
+
+    defs_to_send = [definition] + random.sample(list(definitions.values()), 2)
+
+    definitions[word] = definition
 
     random.shuffle(defs_to_send)
     chat["question"] = defs_to_send
